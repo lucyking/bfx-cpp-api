@@ -15,34 +15,28 @@
 #include <fstream>
 
 
-
 using std::cout;
 using std::endl;
 using std::ifstream;
 using std::string;
 
 
+int main(int argc, char *argv[]) {
 
-int main(int argc, char *argv[])
-{
-    
-    const char *keyFilePath = "/Path/to/your/file/with/API-key-secret";
+    const char *keyFilePath = "./key.txt";
     ifstream ifs(keyFilePath);
-    if (!ifs.is_open())
-    {
+    if (!ifs.is_open()) {
         cout << "Can't open file: " << argv[1] << endl;
         return -1;
-    }
-    else
-    {
+    } else {
         string accessKey, secretKey;
         getline(ifs, accessKey);
         getline(ifs, secretKey);
-        
+
         BitfinexAPI bfxAPI(accessKey, secretKey);
         string response;
         int errCode;
-        
+
         /////////////////////////////////////////////////////////////////////////
         //  Examples
         //  Note that default values are not mandatory. See BitfinexAPI.hpp
@@ -50,18 +44,26 @@ int main(int argc, char *argv[])
         /////////////////////////////////////////////////////////////////////////
 
         ///  Public endpoints ///
-        
-        //  errCode = bfxAPI.getTicker(response, "btcusd");
-        //  errCode = bfxAPI.getStats(response, "btcusd");
-        //  errCode = bfxAPI.getFundingBook(response, "USD", 50, 50);
-        //  errCode = bfxAPI.getOrderBook(response, "btcusd", 50, 50, 1);
-        //  errCode = bfxAPI.getTrades(response, "btcusd", 0L, 50);
-        //  errCode = bfxAPI.getLends(response, "USD", 0L, 50);
-        //  errCode = bfxAPI.getSymbols(response);
-        //  errCode = bfxAPI.getSymbolDetails(response);
-        
+
+        errCode = bfxAPI.getTicker(response, "btcusd");
+        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getStats(response, "btcusd");
+//        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getFundingBook(response, "USD", 50, 50);
+//        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getOrderBook(response, "btcusd", 50, 50, 1);
+//        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getTrades(response, "btcusd", 0L, 50);
+//        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getLends(response, "USD", 0L, 50);
+//        cout << "Response: " << response << endl;
+        errCode = bfxAPI.getSymbols(response);
+        cout << "Response: " << response << endl;
+        errCode = bfxAPI.getSymbolDetails(response);
+        cout << "Response: " << response << endl;
+
         /// Authenticated endpoints ///
-        
+
         //  Account  //
         //  errCode = bfxAPI.getAccountInfo(response);
         //  errCode = bfxAPI.getSummary(response);
@@ -121,15 +123,15 @@ int main(int argc, char *argv[])
         //  errCode = bfxAPI.getUnusedTakenFunds(response);
         //  errCode = bfxAPI.getTotalTakenFunds(response);
         //  errCode = bfxAPI.closeLoan(response, 1235845634LL);
-        
+
         /////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////
-        
+
         cout << "Response: " << response << endl;
         cout << "Error code: " << errCode << endl;
-        
+
         ifs.close();
         return 0;
-        
+
     }
 }

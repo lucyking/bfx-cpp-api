@@ -1,3 +1,5 @@
 *.pbxproj
-
+.idea
 *.xcscheme
+cmake-build-debug
+key.txt
