@@ -3,6 +3,7 @@ project(bfx_cpp_api)
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_CXX_FLAGS -O0)
 add_executable(bfx_cpp_api
         BitfinexAPI.cpp
         BitfinexAPI.hpp

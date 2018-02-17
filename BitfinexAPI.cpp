@@ -1059,7 +1059,10 @@ DoPOSTrequest(const string &UrlEndPoint, const string &params, string &result)
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, httpHeaders);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
-        
+
+        std::cout << "url:" <<url << std::endl;
+        std::cout << "httpHeaders::" << httpHeaders << std::endl;
+
         res = curl_easy_perform(curl);
         
         // libcurl internal error handling

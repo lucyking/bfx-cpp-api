@@ -21,14 +21,18 @@ using std::ifstream;
 using std::string;
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 
     const char *keyFilePath = "./key.txt";
     ifstream ifs(keyFilePath);
-    if (!ifs.is_open()) {
+    if (!ifs.is_open())
+    {
         cout << "Can't open file: " << argv[1] << endl;
         return -1;
-    } else {
+    }
+    else
+    {
         string accessKey, secretKey;
         getline(ifs, accessKey);
         getline(ifs, secretKey);
@@ -45,34 +49,26 @@ int main(int argc, char *argv[]) {
 
         ///  Public endpoints ///
 
-        errCode = bfxAPI.getTicker(response, "btcusd");
-        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getTicker(response, "btcusd");
 //        errCode = bfxAPI.getStats(response, "btcusd");
-//        cout << "Response: " << response << endl;
 //        errCode = bfxAPI.getFundingBook(response, "USD", 50, 50);
-//        cout << "Response: " << response << endl;
-//        errCode = bfxAPI.getOrderBook(response, "btcusd", 50, 50, 1);
-//        cout << "Response: " << response << endl;
+        errCode = bfxAPI.getOrderBook(response, "btcusd", 50, 50, 1);
 //        errCode = bfxAPI.getTrades(response, "btcusd", 0L, 50);
-//        cout << "Response: " << response << endl;
 //        errCode = bfxAPI.getLends(response, "USD", 0L, 50);
-//        cout << "Response: " << response << endl;
-        errCode = bfxAPI.getSymbols(response);
-        cout << "Response: " << response << endl;
-        errCode = bfxAPI.getSymbolDetails(response);
-        cout << "Response: " << response << endl;
+//        errCode = bfxAPI.getSymbols(response);
+//        errCode = bfxAPI.getSymbolDetails(response);
 
         /// Authenticated endpoints ///
 
         //  Account  //
-        //  errCode = bfxAPI.getAccountInfo(response);
-        //  errCode = bfxAPI.getSummary(response);
-        //  errCode = bfxAPI.deposit(response, "bitcoin", "deposit", 1);
-        //  errCode = bfxAPI.getKeyPermissions(response);
-        //  errCode = bfxAPI.getMarginInfos(response);
-        //  errCode = bfxAPI.getBalances(response);
-        //  errCode = bfxAPI.transfer(response, 0.1, "BTC", "trading", "deposit");
-        //  errCode = bfxAPI.withdraw(response); // configure withdraw.conf file before use
+//          errCode = bfxAPI.getAccountInfo(response);
+//          errCode = bfxAPI.getSummary(response);
+//          errCode = bfxAPI.deposit(response, "bitcoin", "deposit", 1);
+//          errCode = bfxAPI.getKeyPermissions(response);
+//          errCode = bfxAPI.getMarginInfos(response);
+//          errCode = bfxAPI.getBalances(response);
+//          errCode = bfxAPI.transfer(response, 0.1, "BTC", "trading", "deposit");
+//          errCode = bfxAPI.withdraw(response); // configure withdraw.conf file before use
         //
         //  Orders  //
         //  errCode = bfxAPI.newOrder(response, "btcusd", 0.01, 983, "sell", "exchange limit", 0, 1,
@@ -116,12 +112,12 @@ int main(int argc, char *argv[]) {
         //  Margin funding  //
         //  errCode = bfxAPI.newOffer(response, "USD", 12000, 25.2, 30, "lend");
         //  errCode = bfxAPI.cancelOffer(response, 12354245628LL);
-        //  errCode = bfxAPI.getOfferStatus(response, 12313541215LL);
+//          errCode = bfxAPI.getOfferStatus(response, 12313541215LL);
         //  errCode = bfxAPI.getActiveCredits(response);
         //  errCode = bfxAPI.getOffers(response);
         //  errCode = bfxAPI.getTakenFunds(response);
         //  errCode = bfxAPI.getUnusedTakenFunds(response);
-        //  errCode = bfxAPI.getTotalTakenFunds(response);
+//          errCode = bfxAPI.getTotalTakenFunds(response);
         //  errCode = bfxAPI.closeLoan(response, 1235845634LL);
 
         /////////////////////////////////////////////////////////////////////////
